@@ -10,11 +10,27 @@
 import MyHeader from '@/components/MyHeader.vue'
 import MyGoods from '@/components/MyGoods.vue'
 import MyFooter from '@/components/MyFooter.vue'
+import axios from 'axios'
 export default {
   components: {
     MyHeader,
     MyGoods,
     MyFooter
+  },
+  data() {
+    return {
+      goodlist: []
+    }
+  },
+  created() {
+    this.getgood()
+  },
+  methods: {
+    async getgood() {
+      const res = await axios({ url: '/api/cart' })
+      // console.log(res)
+      this.goodlist = res.data.list
+    }
   }
 }
 </script>
