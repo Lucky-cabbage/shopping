@@ -1,7 +1,11 @@
 <template>
   <div class="app">
     <MyHeader title="购物车案例" background="hotpink" color="black"></MyHeader>
-    <MyGoods></MyGoods>
+    <MyGoods
+      v-for="item in goodslist"
+      :key="item.goods_id"
+      :goods="item"
+    ></MyGoods>
     <MyFooter></MyFooter>
   </div>
 </template>
@@ -19,17 +23,17 @@ export default {
   },
   data() {
     return {
-      goodlist: []
+      goodslist: []
     }
   },
   created() {
-    this.getgood()
+    this.getgoods()
   },
   methods: {
-    async getgood() {
+    async getgoods() {
       const res = await axios({ url: '/api/cart' })
       // console.log(res)
-      this.goodlist = res.data.list
+      this.goodslist = res.data.list
     }
   }
 }
