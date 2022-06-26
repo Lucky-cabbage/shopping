@@ -6,7 +6,7 @@
       :key="item.goods_id"
       :goods="item"
     ></MyGoods>
-    <MyFooter></MyFooter>
+    <MyFooter :goodslist="goodslist"></MyFooter>
   </div>
 </template>
 
@@ -41,6 +41,9 @@ export default {
 
 <style>
 .app {
+  overflow: auto;
+  max-height: 100vh;
+  box-sizing: border-box;
   padding: 50px 0;
 }
 </style>
